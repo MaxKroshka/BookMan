@@ -41,7 +41,9 @@
       <li class='list' ng-repeat="list in data.lists" style='margin-right: 4px'>
         <a class="waves-effect waves-light btn">{{list.name}}</a>
       </li>
-      <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons">add</i></a>
+      <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons" ng-click='toggleInput()'>add</i></a>
+      <li ng-show='showInput' class='newUrl'><input placeholder="New bookmark URL" id="first_name" type="url" class="validate" maxlength="15" ng-model='listName'></li>
+      <a class="btn-floating btn waves-effect waves-light cyan darken-2" ng-show='showInput'><i class="material-icons" ng-click='addList(); toggleInput()'>done</i></a>
     </ul>
     <div ng-view></div>
   </div>
