@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app='bookman'>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Bookman - the bookmark manager</title>
+  <link rel='shortcut icon' href='assets/favicon.ico' type='image/x-icon' />
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
+
+<body>
+  <div class='container'>
+    <nav>
+      <div class='nav-wrapper'>
+        <ul class='left'>
+          <li class='projectName'>Bookman!</li>
+        </ul>
+        <ul class='center'>
+        </ul>
+        <ul class="right">
+          <li>
+            <div>
+              <!-- ng-show="location != '/signup' && location != '/signin'" -->
+              <div class="input-field">
+                <input class='red darken-3' id="search" type="search" ng-model="search.title" placeholder="Search..." />
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </div>
+          </li>
+          <li><a href='#/signout' class='logout'><i class="material-icons left">power_settings_new</i>Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <ul class='left lists' ng-controller='ListsCtrl'>
+      <li id='favorites'><a class="waves-effect waves-light btn"><i class="material-icons left">star</i>Favorites</a></li>
+      <li id='readingList'><a class="waves-effect waves-light btn"><i class="material-icons left">class</i>Reading List</a></li>
+      <li class='list' ng-repeat="list in data.lists" style='margin-right: 4px'>
+        <a class="waves-effect waves-light btn">{{list.name}}</a>
+      </li>
+      <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons">add</i></a>
+    </ul>
+    <div ng-view></div>
+  </div>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="app/lists/lists.js"></script>
+  <script src="app/app.js"></script>
+</body>
+
+</html>
