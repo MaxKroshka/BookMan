@@ -1,19 +1,18 @@
-<div id='container'>
-  <div class='link' ng-repeat="link in data.links">
+<div id='links'>
+  <div class='link' ng-repeat="link in data.links | filter:{tab: activeTab}">
     <img ng-src={{link.favicon}} />
     <ul class='right'>
-      <a class="btn-floating btn yellow"><i class="material-icons">star</i></a>
-      <a class="btn-floating btn blue"><i class="material-icons">error</i></a>
-      <a class="btn-floating btn green"><i class="material-icons">class</i></a>
-      <a class="btn-floating btn red"><i class="material-icons">reorder</i></a>
+      <a class="btn-floating btn yellow" ng-click='toggleEvent(link.url, "favorite")'><i class="material-icons">star</i></a>
+      <a class="btn-floating btn green"><i class="material-icons" ng-click='toggleEvent(link.url, "reading")'>class</i></a>
+      <a class="btn-floating btn blue"><i class="material-icons"  ng-click='toggleEvent(link.url, "sticky")'>error</i></a>
+      <a class="btn-floating btn red" ng-click='removeUrl(link.url)'>X</a>
     </ul>
     <ul>
       <div class='title'>{{link.title}}</div>
     </ul>
-    <div class='description'>{{link.description}}</div>
     <div class='linkUrl'>{{link.url}}</div>
   </div>
-  <ul class='urlInput'>
+  <ul class='urlInput' ng-show="location != '/allLinks'">
     <li class='newUrl'>
       <input placeholder="New URL" type="url" class="validate" ng-model='newUrl'>
     </li>
