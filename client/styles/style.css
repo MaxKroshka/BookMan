@@ -152,3 +152,8 @@ margin-left: 10px;
 .urlInput input {
   width: 300px;
 }
+
+.active {
+  color: black;
+  background-color: black;
+}

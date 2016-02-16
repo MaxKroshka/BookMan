@@ -21,11 +21,9 @@ angular.module('bookman.links', [])
     $scope.newUrl = '';
   };
 
-  $scope.toggleEvent = function(url, event, toggledOff) {
+  $scope.toggleEvent = function(url, event) {
     Links.toggleEvent({ url: url, event: event }).then(function(res) {
-      if (toggledOff) {
         $scope.initialize();
-      }
     });
   };
 

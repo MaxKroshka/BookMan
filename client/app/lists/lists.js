@@ -4,7 +4,6 @@ angular.module('bookman.lists', [])
   $scope.data = {};
   $scope.data.lists = [];
   $scope.showInput = false;
-
   Lists.getLists().then(function(data) {
     $scope.data.lists = data;
   });
