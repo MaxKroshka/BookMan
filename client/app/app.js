@@ -1,4 +1,5 @@
 angular.module('bookman', [
+  'bookman.services',
   'bookman.links',
   'bookman.lists',
   'ngRoute'
@@ -7,6 +8,6 @@ angular.module('bookman', [
   $routeProvider
     .when('/', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController',
+      controller: 'LinksController'
   });
 });

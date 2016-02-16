@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  margin-top: 10px;
+  font-family: arial, sans-serif;
+  background-color: #34495e;
+}
+
+h1 {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+#container {
+  clear: both;
+  margin-top: 10px;
+}
+
+.link {
+  font-family: 'Lobster', cursive;
+  color: #1287a8;
+  border-bottom: 1px solid #7f8c8d;
+  margin-bottom: 5px;
+  padding: 5px;
+  min-height: 50px;
+}
+
+.link:hover {
+  background-color: #bdc3c7;
+}
+
+.link img {
+  float: left;
+  margin: 10px 5px 0 5px;
+  width: 30px;
+}
+
+.link .title {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.link .description {
+  font-size: 16px;
+}
+
+
+form {
+  margin: 10px;
+}
+
+input {
+  width: 360px;
+  display: block;
+  font-size: 13px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+input[type=url] {
+  display: inline
+}
+
+input[type=url]:focus {
+  outline: none;
+}
+
+
+.error {
+  border: red solid 4px;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+.clean {
+  border: #efe solid 2px;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+.creator {
+  height: 50px;
+}
+
+.creator form {
+  float: left;
+  height: 80px;
+}
+
+.creator img.spinner {
+  height: 46px;
+  margin-bottom: 5px;
+  padding: 10px;
+  display: none;
+}
+
+.creator .message {
+  clear: both;
+}
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align: left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.nav-wrapper {
+  background-color: #c62828;
+}
+.projectName {
+font-family: 'Kaushan Script', cursive;
+font-size: 35px;
+padding: 5px;
+padding-top: 0;
+margin-left: 10px;
+
+}
+
+#search {
+  width: 250px;
+}
+
+.lists {
+  margin: 0;
+  height: 40px;
+  width: 100%;
+}
+
+.lists li {
+  width: auto;
+  display: inline-block;
+}
+
+.lists li a {
+  background-color: #e64a19;
+  font-size: 10px;
+  padding: 10px;
+  padding-top: 0;
+}
+.lists li a:hover{
+  background-color: #bf360c;
+}
+
+.lists li i {
+  margin-right: 2px;
+}
+
+.newList {
+  width: 100px;
+}
+.newList input {
+    color: white;
+    max-height: 35px;
+}

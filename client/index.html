@@ -42,7 +42,7 @@
         <a class="waves-effect waves-light btn">{{list.name}}</a>
       </li>
       <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons" ng-click='toggleInput()'>add</i></a>
-      <li ng-show='showInput' class='newUrl'><input placeholder="New bookmark list" id="first_name" type="text" class="validate" maxlength="15" ng-model='listName' ng-submit='addList()'></li>
+      <li ng-show='showInput' class='newList'><input placeholder="New bookmark list" type="text" class="validate" maxlength="15" ng-model='listName'></li>
       <a class="btn-floating btn waves-effect waves-light cyan darken-2" ng-show='showInput'><i class="material-icons" ng-click='addList()'>done</i></a>
     </ul>
 
@@ -53,6 +53,7 @@
   <script src="app/lists/lists.js"></script>
   <script src="app/links/links.js"></script>
   <script src="app/app.js"></script>
+  <script src='app/services/services.js'></script>
 </body>
 
 </html>
