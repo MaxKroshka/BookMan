@@ -22,6 +22,7 @@ module.exports = {
 
   newLink: function (req, res, next) {
     var url = req.body.url;
+    var tab = req.body.tab;
     // var user = req.user.username;
     if (!util.isValidUrl(url)) {
       return next(new Error('Not a valid url'));
@@ -32,7 +33,6 @@ module.exports = {
         if (match) {
           res.send(match);
         } else {
-          console.log(url);
           return util.getUrlTitle(url);
         }
       })
@@ -41,6 +41,7 @@ module.exports = {
           var newLink = {
             url: url,
             title: title,
+            tab: tab,
             // user: user,
             favicon: 'http://'+url.split('/')[2]+'/favicon.ico'
           };
@@ -57,6 +58,35 @@ module.exports = {
       });
   },
 
-  // toggleFav: function(req, res, next){
-  // }
+  toggleEvent: function(req, res, next){
+    var url = req.body.url;
+    var event = req.body.event;
+    findLink({url: url})
+      .then(function (url){
+        url[event] = !url[event];
+        return url.save();
+      })
+      .then(function(url) {
+        res.json(url);
+      })
+      .catch(function(err){
+        console.log('error:', err);
+      });
+  },
+
+  removeLink: function(req, res, next){
+    var url = req.body.url;
+    findLink({url: url})
+      .then(function (url){
+        return url.remove();
+      })
+      .then(function() {
+        res.json();
+        console.log('removed');
+      })
+      .catch(function(err){
+        console.log('error:', err);
+      });
+  }
+
 };

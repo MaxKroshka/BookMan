@@ -9,6 +9,8 @@ module.exports = function (app, express) {
   // app.get('/api/users/signedin', userController.checkAuth);
   app.get('/api/links/', linksController.allLinks);
   app.post('/api/links/', linksController.newLink);
+  app.post('/api/links/event', linksController.toggleEvent);
+  app.post('/api/links/remove', linksController.removeLink);
   app.get('/api/lists/', listController.allLists);
   app.post('/api/lists/', listController.newList);
 
