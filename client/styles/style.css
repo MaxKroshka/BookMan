@@ -1,7 +1,7 @@
 body {
   margin: 0;
   margin-top: 10px;
-  font-family: arial, sans-serif;
+  font-family: 'Gentium Basic', serif;
   background-color: #34495e;
 }
 
@@ -20,8 +20,8 @@ h2 {
 }
 
 .link {
-  font-family: 'Lobster', cursive;
-  color: #1287a8;
+  font-family: 'Gentium Basic', serif;
+  color: #81d4fa;
   border-bottom: 1px solid #7f8c8d;
   margin-bottom: 5px;
   padding: 5px;
@@ -29,7 +29,7 @@ h2 {
 }
 
 .link:hover {
-  background-color: #bdc3c7;
+  background-color: #616161;
 }
 
 .link img {
@@ -39,14 +39,18 @@ h2 {
 }
 
 .link .title {
+  color: #4fc3f7;
   font-weight: 600;
-  font-size: 22px;
-}
-
-.link .description {
   font-size: 16px;
 }
 
+.link .description {
+  font-size: 14px;
+}
+
+.link .linkUrl {
+  font-size: 12px;
+}
 
 form {
   margin: 10px;
@@ -160,4 +164,11 @@ margin-left: 10px;
 .newList input {
     color: white;
     max-height: 35px;
+}
+
+.urlInput li {
+  display: inline;
+}
+.urlInput input {
+  width: 300px;
 }

@@ -32,6 +32,7 @@ module.exports = {
         if (match) {
           res.send(match);
         } else {
+          console.log(url);
           return util.getUrlTitle(url);
         }
       })
@@ -41,7 +42,7 @@ module.exports = {
             url: url,
             title: title,
             // user: user,
-            favicon: url+'/favicon.ico'
+            favicon: 'http://'+url.split('/')[2]+'/favicon.ico'
           };
           return createLink(newLink);
         }
@@ -54,6 +55,8 @@ module.exports = {
       .fail(function (error) {
         next(error);
       });
-  }
+  },
 
+  // toggleFav: function(req, res, next){
+  // }
 };

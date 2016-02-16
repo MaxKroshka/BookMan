@@ -1,21 +1,22 @@
 <div id='container'>
   <div class='link' ng-repeat="link in data.links">
-    <img src='assets/url.png' />
+    <img ng-src={{link.favicon}} />
     <ul class='right'>
-    <a class="btn-floating btn yellow"><i class="material-icons">star</i></a>
-    <a class="btn-floating btn blue"><i class="material-icons">error</i></a>
-    <a class="btn-floating btn green"><i class="material-icons">class</i></a>
-    <a class="btn-floating btn red"><i class="material-icons">reorder</i></a>
+      <a class="btn-floating btn yellow"><i class="material-icons">star</i></a>
+      <a class="btn-floating btn blue"><i class="material-icons">error</i></a>
+      <a class="btn-floating btn green"><i class="material-icons">class</i></a>
+      <a class="btn-floating btn red"><i class="material-icons">reorder</i></a>
     </ul>
     <ul>
-    <div class='title'>{{link.title}}</div>
+      <div class='title'>{{link.title}}</div>
     </ul>
-    
     <div class='description'>{{link.description}}</div>
-    <div>{{link.url}}</div>
+    <div class='linkUrl'>{{link.url}}</div>
   </div>
-  <li class='newUrl'><input placeholder="New URL" type="url" class="validate" ng-model='newUrl'></li>
-      <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons" ng-click='addUrl()'>done</i></a>
+  <ul class='urlInput'>
+    <li class='newUrl'>
+      <input placeholder="New URL" type="url" class="validate" ng-model='newUrl'>
+    </li>
+    <li> <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons" ng-click='addUrl()'>done</i></a> </li>
+  </ul>
 </div>
-
-
