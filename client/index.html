@@ -6,6 +6,7 @@
   <title>Bookman - the bookmark manager</title>
   <link rel='shortcut icon' href='assets/favicon.ico' type='image/x-icon' />
   <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/style.css" />
@@ -23,8 +24,7 @@
         <ul class="right">
           <li>
             <div>
-              <!-- ng-show="location != '/signup' && location != '/signin'" -->
-              <div class="input-field">
+              <div class="input-field" ng-show="location != '/signup' && location != '/signin'">
                 <input class='red darken-3' id="search" type="search" ng-model="search.title" placeholder="Search..." />
                 <label for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
@@ -35,21 +35,23 @@
         </ul>
       </div>
     </nav>
-    <ul class='left lists' ng-controller='ListsCtrl'>
+    <ul class='left lists' ng-controller='ListsCtrl' ng-show="location != '/signup' && location != '/signin'">
       <li id='favorites'><a class="waves-effect waves-light btn"><i class="material-icons left">star</i>Favorites</a></li>
       <li id='readingList'><a class="waves-effect waves-light btn"><i class="material-icons left">class</i>Reading List</a></li>
       <li class='list' ng-repeat="list in data.lists" style='margin-right: 4px'>
         <a class="waves-effect waves-light btn">{{list.name}}</a>
       </li>
       <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons" ng-click='toggleInput()'>add</i></a>
-      <li ng-show='showInput' class='newUrl'><input placeholder="New bookmark URL" id="first_name" type="url" class="validate" maxlength="15" ng-model='listName'></li>
-      <a class="btn-floating btn waves-effect waves-light cyan darken-2" ng-show='showInput'><i class="material-icons" ng-click='addList(); toggleInput()'>done</i></a>
+      <li ng-show='showInput' class='newUrl'><input placeholder="New bookmark list" id="first_name" type="text" class="validate" maxlength="15" ng-model='listName' ng-submit='addList()'></li>
+      <a class="btn-floating btn waves-effect waves-light cyan darken-2" ng-show='showInput'><i class="material-icons" ng-click='addList()'>done</i></a>
     </ul>
+
     <div ng-view></div>
   </div>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
   <script src="app/lists/lists.js"></script>
+  <script src="app/links/links.js"></script>
   <script src="app/app.js"></script>
 </body>
 

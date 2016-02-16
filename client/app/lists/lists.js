@@ -1,12 +1,19 @@
 angular.module('bookman.lists', [])
 
-.controller('ListsCtrl', function ($scope) {
+.controller('ListsCtrl', function ($scope) { // Add Lists factory later
   $scope.data = {};
-  $scope.data.lists = [{name: 'Learning'},{name: 'Info'},{name: 'Learning'},{name: 'Info'}];
+  $scope.data.lists = [];
   $scope.showInput = false;
 
+  // Lists.getLists().then(function(data){
+    // $scope.data.lists = data;
+  // });
+
   $scope.addList = function(){
-    console.log('Added list!');
+    // Lists.addList({name: $scope.listName})
+    $scope.data.lists.push({name: $scope.listName}); // Remove later
+    $scope.toggleInput();
+    $scope.listName = '';
   };
 
   $scope.toggleInput = function(){
