@@ -1,0 +1,15 @@
+<div id='links'>
+  <div class='link' ng-repeat="link in data.links">
+    <img ng-src={{link.favicon}} />
+    <ul class='right'>
+      <a class="btn-floating btn yellow" ng-click='toggleEvent(link.url, "favorite")'><i class="material-icons">star</i></a>
+      <a class="btn-floating btn green"><i class="material-icons" ng-click='toggleEvent(link.url, "reading")'>class</i></a>
+      <a class="btn-floating btn blue"><i class="material-icons"  ng-click='toggleEvent(link.url, "sticky")'>error</i></a>
+      <a class="btn-floating btn red"><i class="material-icons">reorder</i></a>
+    </ul>
+    <ul>
+      <div class='title'>{{link.title}}</div>
+    </ul>
+    <div class='linkUrl'>{{link.url}}</div>
+  </div>
+</div>

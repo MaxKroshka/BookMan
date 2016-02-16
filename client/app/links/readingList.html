@@ -1,0 +1,12 @@
+<div id='readingList'>
+  <div class='link' ng-repeat="link in data.links | filter:{reading: true}">
+    <img ng-src={{link.favicon}} />
+    <ul class='right'>
+      <a class="btn-floating btn red" ng-click='toggleEvent(link.url, "reading", true)'>X</a>
+    </ul>
+    <ul>
+      <div class='title'>{{link.title}}</div>
+    </ul>
+    <div class='linkUrl'>{{link.url}}</div>
+  </div>
+</div>
