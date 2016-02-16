@@ -25,6 +25,7 @@ angular.module('bookman.services', [])
     };
   })
   .factory('Links', function($http) {
+
     var getLinks = function() {
       return $http({
         method: 'GET',
@@ -42,10 +43,28 @@ angular.module('bookman.services', [])
       });
     };
 
+    var removeLink = function(link) {
+      return $http({
+        method: 'POST',
+        url: '/api/links/remove',
+        data: link
+      });
+    };
+
+    var toggleEvent = function(urlData){
+      return $http({
+        method: 'POST',
+        url: 'api/links/event',
+        data: urlData
+      });
+    };
+
 
     return {
       getLinks: getLinks,
-      addLink: addLink
+      addLink: addLink,
+      removeLink: removeLink,
+      toggleEvent: toggleEvent
     };
 
 
