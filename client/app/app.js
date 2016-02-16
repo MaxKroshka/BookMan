@@ -2,8 +2,7 @@ angular.module('bookman', [
     'bookman.services',
     'bookman.links',
     'bookman.lists',
-    'ngRoute',
-    'ngAnimate'
+    'ngRoute'
   ])
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
