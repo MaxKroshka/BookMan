@@ -1,6 +1,6 @@
 <div id='links'>
-  <div class='link' ng-repeat="link in data.links | filter:{tab: activeTab} | orderBy:'sticky':true">
-    <img ng-src={{link.favicon}} />
+  <div class='link' ng-repeat="link in data.links | filter:{tab: activeTab} | orderBy:'sticky':true" ng-click='openTab(link.url)'>
+    <img ng-src={{link.favicon}}/>
     <ul class='right'>
       <a class="btn-floating btn yellow" ng-class="{grey: link.favorite === false}" ng-click='toggleEvent(link.url, "favorite")'><i class="material-icons">star</i></a>
       <a class="btn-floating btn green"><i class="material-icons" ng-class="{grey: link.reading === false}" ng-click='toggleEvent(link.url, "reading")'>class</i></a>

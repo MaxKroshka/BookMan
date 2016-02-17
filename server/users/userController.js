@@ -50,10 +50,36 @@ module.exports = {
         }
       })
       .then(function (user) {
-        res.json(user);
+        // create token to send back for auth
+        var token = jwt.encode(user, 'secret');
+        res.json({token: token});
       })
       .fail(function (error) {
         next(error);
       });
+  },
+
+  checkAuth: function (req, res, next) {
+    // checking to see if the user is authenticated
+    // grab the token in the header is any
+    // then decode the token, which we end up being the user object
+    // check to see if that user exists in the database
+    var token = req.headers['x-access-token'];
+    if (!token) {
+      next(new Error('No token'));
+    } else {
+      var user = jwt.decode(token, 'secret');
+      findUser({username: user.username})
+        .then(function (foundUser) {
+          if (foundUser) {
+            res.send(200);
+          } else {
+            res.send(401);
+          }
+        })
+        .fail(function (error) {
+          next(error);
+        });
+    }
   }
 };

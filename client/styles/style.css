@@ -28,6 +28,8 @@ h2 {
 }
 
 .link:hover {
+  cursor: pointer; 
+  cursor: hand; 
   background-color: #616161;
 }
 
@@ -105,6 +107,17 @@ font-size: 35px;
 padding: 5px;
 padding-top: 0;
 margin-left: 10px;
+
+}
+
+.logo {
+font-family: 'Kaushan Script', cursive;
+font-size: 60px;
+padding: 5px;
+padding-top: 0;
+margin-left: -10px;
+text-align: center;
+color: #c62828;
 
 }
 

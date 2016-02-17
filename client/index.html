@@ -14,8 +14,9 @@
 
 <body>
   <div class='container'>
-    <nav>
-      <div class='nav-wrapper'>
+    <h1 class='logo' ng-hide="location != '/signup' && location != '/signin'"> Bookman!</h1>
+    <nav ng-show="location != '/signup' && location != '/signin'">
+      <div class='nav-wrapper' >
         <ul class='left'>
           <li class='projectName'>Bookman!</li>
         </ul>
@@ -51,10 +52,12 @@
   </div>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
-  <script src="app/lists/lists.js"></script>
+
+  <script src="app/auth/auth.js"></script>
   <script src="app/links/links.js"></script>
-  <script src="app/app.js"></script>
+  <script src="app/lists/lists.js"></script>
   <script src='app/services/services.js'></script>
+  <script src="app/app.js"></script>
 </body>
 
 </html>

@@ -12,6 +12,7 @@ angular.module('bookman.auth', [])
       Auth.signin($scope.user)
         .then(function (token) {
           $window.localStorage.setItem('com.bookman', token);
+          console.log('changing location');
           $location.path('/links');
         })
         .catch(function (error) {

@@ -4,9 +4,9 @@ var listController = require('../lists/listController.js');
 var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
-  // app.post('/api/users/signin', userController.signin);
-  // app.post('/api/users/signup', userController.signup);
-  // app.get('/api/users/signedin', userController.checkAuth);
+  app.post('/api/users/signin', userController.signin);
+  app.post('/api/users/signup', userController.signup);
+  app.get('/api/users/signedin', userController.checkAuth);
   app.get('/api/links/', linksController.allLinks);
   app.post('/api/links/', linksController.newLink);
   app.post('/api/links/event', linksController.toggleEvent);

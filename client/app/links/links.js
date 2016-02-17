@@ -1,6 +1,6 @@
 angular.module('bookman.links', [])
 
-.controller('LinksController', function($scope, $rootScope, Links) {
+.controller('LinksController', function($scope, $rootScope, Links, $window) {
 
   $scope.data = {};
   $scope.data.links = [];
@@ -32,6 +32,11 @@ angular.module('bookman.links', [])
     then(function(res){
       $scope.initialize();
     });
+  };
+
+  $scope.openTab = function(url){
+    console.log('clicked');
+    $window.open(url, '_blank');
   };
 
   $scope.initialize();
