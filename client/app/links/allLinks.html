@@ -1,11 +1,11 @@
 <div id='links'>
-  <div class='link' ng-repeat="link in data.links | orderBy:'sticky':true" class="repeated-item">
+  <div class='link' ng-repeat="link in data.links | filter:search:strict | orderBy:'sticky':true " class="repeated-item">
     <img ng-src={{link.favicon}} />
     <ul class='right'>
       <a class="btn-floating btn yellow" ng-class="{grey: link.favorite === false}" ng-click='toggleEvent(link.url, "favorite")'><i class="material-icons">star</i></a>
       <a class="btn-floating btn green"><i class="material-icons" ng-class="{grey: link.reading === false}" ng-click='toggleEvent(link.url, "reading")'>class</i></a>
       <a class="btn-floating btn blue"><i class="material-icons" ng-class="{grey: link.sticky === false}" ng-click='toggleEvent(link.url, "sticky")'>error</i></a>
-      <a class="btn-floating btn red" ng-click='removeUrl(link.url)'>X</a>
+      <a class="btn-floating btn red" ng-click='removeUrl(link.url)'><i class="material-icons">clear</i></a>
     </ul>
     <ul>
       <div class='title'>{{link.title}}</div>

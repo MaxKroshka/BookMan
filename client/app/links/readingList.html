@@ -1,8 +1,8 @@
 <div id='readingList'>
-  <div class='link' ng-repeat="link in data.links | filter:{reading: true}">
+  <div class='link' ng-repeat="link in data.links | filter:{reading: true} | filter:search:strict">
     <img ng-src={{link.favicon}} />
     <ul class='right'>
-      <a class="btn-floating btn red" ng-click='toggleEvent(link.url, "reading")'>X</a>
+      <a class="btn-floating btn red" ng-click='toggleEvent(link.url, "reading")'><i class="material-icons">clear</i></a>
     </ul>
     <ul>
       <div class='title'>{{link.title}}</div>

@@ -9,8 +9,8 @@ var findAllLists = Q.nbind(List.find, List);
 module.exports = {
 
   allLists: function (req, res, next){
-    // var user = req.user.username;
-    findAllLists({})
+    var user = req.user.username;
+    findAllLists({user: user})
       .then(function(lists){
         res.json(lists);
       })
@@ -21,15 +21,16 @@ module.exports = {
 
   newList: function (req, res, next){
     var listName = req.body.name;
-    // var user = req.user.username;
+    var user = req.user.username;
 
-    findList({name: listName})
+    findList({name: listName, user: user})
       .then(function(match){
         if(match){
           return next(new Error('List already exists.'));
         }
         var newList = {
-          name: listName
+          name: listName,
+          user: user
         };
         return createList(newList);
       })

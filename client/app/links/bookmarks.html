@@ -1,8 +1,8 @@
 <div id='bookmarks'>
-  <div class='link' ng-repeat="link in data.links | filter:{favorite: true}">
+  <div class='link' ng-repeat="link in data.links | filter:{favorite: true} | filter:search:strict">
     <img ng-src={{link.favicon}} />
     <ul class='right'>
-      <a class="btn-floating btn red" ng-click='toggleEvent(link.url, "favorite")'>X</a>
+      <a class="btn-floating btn red" ng-click='toggleEvent(link.url, "favorite")'><i class="material-icons">clear</i></a>
     </ul>
     <ul>
       <div class='title'>{{link.title}}</div>

@@ -1,6 +1,6 @@
 angular.module('bookman.services', [])
 
-.factory('Lists', function($http) {
+  .factory('Lists', function($http) {
 
     var getLists = function() {
       return $http({
@@ -24,6 +24,7 @@ angular.module('bookman.services', [])
       addList: addList
     };
   })
+
   .factory('Links', function($http) {
 
     var getLinks = function() {
@@ -51,7 +52,7 @@ angular.module('bookman.services', [])
       });
     };
 
-    var toggleEvent = function(urlData){
+    var toggleEvent = function(urlData) {
       return $http({
         method: 'POST',
         url: 'api/links/event',
@@ -67,37 +68,37 @@ angular.module('bookman.services', [])
       toggleEvent: toggleEvent
     };
 
-
   })
-  .factory('Auth', function ($http, $location, $window) {
+  
+  .factory('Auth', function($http, $location, $window) {
 
-    var signin = function (user) {
+    var signin = function(user) {
       return $http({
-        method: 'POST',
-        url: '/api/users/signin',
-        data: user
-      })
-      .then(function (resp) {
-        return resp.data.token;
-      });
+          method: 'POST',
+          url: '/api/users/signin',
+          data: user
+        })
+        .then(function(resp) {
+          return resp.data.token;
+        });
     };
 
-    var signup = function (user) {
+    var signup = function(user) {
       return $http({
-        method: 'POST',
-        url: '/api/users/signup',
-        data: user
-      })
-      .then(function (resp) {
-        return resp.data.token;
-      });
+          method: 'POST',
+          url: '/api/users/signup',
+          data: user
+        })
+        .then(function(resp) {
+          return resp.data.token;
+        });
     };
 
-    var isAuth = function () {
+    var isAuth = function() {
       return !!$window.localStorage.getItem('com.bookman');
     };
 
-    var signout = function () {
+    var signout = function() {
       $window.localStorage.removeItem('com.bookman');
       $location.path('/signin');
     };
@@ -109,4 +110,3 @@ angular.module('bookman.services', [])
       signout: signout
     };
   });
-

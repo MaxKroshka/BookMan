@@ -10,8 +10,8 @@ var findAllLinks = Q.nbind(Link.find, Link);
 module.exports = {
 
   allLinks: function (req, res, next) {
-  // var user = req.user.username;
-  findAllLinks({})
+  var user = req.user.username;
+  findAllLinks({user: user})
     .then(function (links) {
       res.json(links);
     })
@@ -23,12 +23,12 @@ module.exports = {
   newLink: function (req, res, next) {
     var url = req.body.url;
     var tab = req.body.tab;
-    // var user = req.user.username;
+    var user = req.user.username;
     if (!util.isValidUrl(url)) {
       return next(new Error('Not a valid url'));
     }
 
-    findLink({url: url})
+    findLink({url: url, user: user})
       .then(function (match) {
         if (match) {
           res.send(match);
@@ -42,7 +42,7 @@ module.exports = {
             url: url,
             title: title,
             tab: tab,
-            // user: user,
+            user: user,
             favicon: 'http://'+url.split('/')[2]+'/favicon.ico'
           };
           return createLink(newLink);
@@ -61,7 +61,8 @@ module.exports = {
   toggleEvent: function(req, res, next){
     var url = req.body.url;
     var event = req.body.event;
-    findLink({url: url})
+    var user = req.user.username;
+    findLink({url: url, user: user})
       .then(function (url){
         url[event] = !url[event];
         return url.save();
@@ -76,7 +77,8 @@ module.exports = {
 
   removeLink: function(req, res, next){
     var url = req.body.url;
-    findLink({url: url})
+    var user = req.user.username;
+    findLink({url: url, user: user})
       .then(function (url){
         return url.remove();
       })

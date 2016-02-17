@@ -4,16 +4,22 @@ angular.module('bookman.lists', [])
   $scope.data = {};
   $scope.data.lists = [];
   $scope.showInput = false;
-  Lists.getLists().then(function(data) {
-    $scope.data.lists = data;
+  $scope.something = $rootScope.search;
+  $scope.$watch(function () { return $rootScope.flag; }, function (newValue, oldValue){
+     if (newValue !== oldValue) $scope.initialize();
   });
+
+  $scope.initialize = function() {
+    Lists.getLists().then(function(data) {
+      $scope.data.lists = data;
+    });
+  };
 
   $scope.addList = function() {
     $scope.toggleInput();
     Lists.addList({ name: $scope.listName })
       .then(function(res) {
-        $scope.data.lists.push({ name: res.data.name });
-        $rootScope.activeTab = res.data.name;
+        $scope.initialize();
       });
     $scope.listName = '';
     
@@ -26,4 +32,6 @@ angular.module('bookman.lists', [])
   $scope.toggleInput = function() {
     $scope.showInput = !$scope.showInput;
   };
+  
+  $scope.initialize();
 });

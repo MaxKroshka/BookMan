@@ -25,15 +25,15 @@ angular.module('bookman', [
       .when('/bookmarks', {
         templateUrl: 'app/links/bookmarks.html',
         controller: 'LinksController',
-        access: {restricted: true}
+        access: {restricted: true},
+         resolve: {
+          updateLists: function ($rootScope) {
+            $rootScope.flag = Math.random();
+          }
+        }
       })
       .when('/readingList', {
         templateUrl: 'app/links/readingList.html',
-        controller: 'LinksController',
-        access: {restricted: true}
-      })
-      .when('/', {
-        templateUrl: 'app/links/links.html',
         controller: 'LinksController',
         access: {restricted: true}
       })
@@ -44,8 +44,13 @@ angular.module('bookman', [
           }
         }
       })
-      .otherwise({
+      .when('/', {
         templateUrl: 'app/links/links.html',
+        controller: 'LinksController',
+        access: {restricted: true}
+      })
+      .otherwise({
+        templateUrl: 'app/links/bookmarks.html',
         controller: 'LinksController',
         access: {restricted: true}
       });
@@ -58,7 +63,7 @@ angular.module('bookman', [
     // then add it to the header so the server can validate the request
     var attach = {
       request: function (object) {
-        var jwt = $window.localStorage.getItem('com.shortly');
+        var jwt = $window.localStorage.getItem('com.bookman');
         if (jwt) {
           object.headers['x-access-token'] = jwt;
         }

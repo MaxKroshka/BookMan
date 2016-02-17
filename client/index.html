@@ -44,10 +44,9 @@
         <a href='#/' class="waves-effect waves-light btn" ng-click='changeTab(list.name)' ng-class="{amber: list.name === activeTab}">{{list.name}}</a>
       </li>
       <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons" ng-click='toggleInput()'>add</i></a>
-      <li ng-show='showInput' class='newList'><input placeholder="New bookmark list" type="text" class="validate" maxlength="15" ng-model='listName'></li>
+      <li ng-show='showInput' class='newList'><input placeholder="New bookmark list" type="text" class="validate" maxlength="20" ng-model='listName'></li>
       <a class="btn-floating btn waves-effect waves-light cyan darken-2" ng-show='showInput'><i class="material-icons" ng-click='addList()'>done</i></a>
     </ul>
-
     <div ng-view></div>
   </div>
   <script src="lib/angular/angular.js"></script>

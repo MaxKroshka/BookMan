@@ -7,7 +7,6 @@ angular.module('bookman.links', [])
 
   $scope.initialize = function() {
     Links.getLinks().then(function(data) {
-      console.log(data);
       $scope.data.links = data;
     });
   };
@@ -15,7 +14,6 @@ angular.module('bookman.links', [])
   $scope.addUrl = function() {
     Links.addLink({ url: $scope.newUrl, tab: $rootScope.activeTab })
       .then(function(res) {
-        console.log(res);
         $scope.data.links.push(res.data);
       });
     $scope.newUrl = '';

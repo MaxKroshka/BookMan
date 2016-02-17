@@ -11,7 +11,12 @@ h1 {
 }
 
 h2 {
+  color: #81d4fa;
   margin-bottom: 10px;
+}
+
+#signin,#signup input {
+  color: #81d4fa;
 }
 
 #links, #bookmarks, #readingList {
