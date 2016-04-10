@@ -1,112 +1,121 @@
 angular.module('bookman.services', [])
 
-  .factory('Lists', function($http) {
+.factory('Lists', function($http) {
 
-    var getLists = function() {
-      return $http({
-        method: 'GET',
-        url: 'api/lists'
-      }).then(function(res) {
-        return res.data;
-      });
-    };
+  var getLists = function() {
+    return $http({
+      method: 'GET',
+      url: 'api/lists'
+    }).then(function(res) {
+      return res.data;
+    });
+  };
 
-    var addList = function(list) {
-      return $http({
-        method: 'POST',
-        url: 'api/lists',
-        data: list
-      });
-    };
+  var addList = function(list) {
+    return $http({
+      method: 'POST',
+      url: 'api/lists',
+      data: list
+    });
+  };
 
-    return {
-      getLists: getLists,
-      addList: addList
-    };
-  })
+  var removeList = function(list) {
+    return $http({
+      method: 'POST',
+      url: 'api/lists/remove',
+      data: list
+    });
+  };
 
-  .factory('Links', function($http) {
+  return {
+    getLists: getLists,
+    addList: addList,
+    removeList: removeList
+  };
+})
 
-    var getLinks = function() {
-      return $http({
-        method: 'GET',
-        url: '/api/links'
-      }).then(function(res) {
-        return res.data;
-      });
-    };
+.factory('Links', function($http) {
 
-    var addLink = function(link) {
-      return $http({
-        method: 'POST',
-        url: '/api/links',
-        data: link
-      });
-    };
+  var getLinks = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/links'
+    }).then(function(res) {
+      return res.data;
+    });
+  };
 
-    var removeLink = function(link) {
-      return $http({
-        method: 'POST',
-        url: '/api/links/remove',
-        data: link
-      });
-    };
+  var addLink = function(link) {
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: link
+    });
+  };
 
-    var toggleEvent = function(urlData) {
-      return $http({
-        method: 'POST',
-        url: 'api/links/event',
-        data: urlData
-      });
-    };
+  var removeLink = function(link) {
+    return $http({
+      method: 'POST',
+      url: '/api/links/remove',
+      data: link
+    });
+  };
+
+  var toggleEvent = function(urlData) {
+    return $http({
+      method: 'POST',
+      url: 'api/links/event',
+      data: urlData
+    });
+  };
 
 
-    return {
-      getLinks: getLinks,
-      addLink: addLink,
-      removeLink: removeLink,
-      toggleEvent: toggleEvent
-    };
+  return {
+    getLinks: getLinks,
+    addLink: addLink,
+    removeLink: removeLink,
+    toggleEvent: toggleEvent
+  };
 
-  })
-  
-  .factory('Auth', function($http, $location, $window) {
+})
 
-    var signin = function(user) {
-      return $http({
-          method: 'POST',
-          url: '/api/users/signin',
-          data: user
-        })
-        .then(function(resp) {
-          return resp.data.token;
-        });
-    };
+.factory('Auth', function($http, $location, $window) {
 
-    var signup = function(user) {
-      return $http({
-          method: 'POST',
-          url: '/api/users/signup',
-          data: user
-        })
-        .then(function(resp) {
-          return resp.data.token;
-        });
-    };
+  var signin = function(user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signin',
+      data: user
+    })
+    .then(function(resp) {
+      return resp.data.token;
+    });
+  };
 
-    var isAuth = function() {
-      return !!$window.localStorage.getItem('com.bookman');
-    };
+  var signup = function(user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signup',
+      data: user
+    })
+    .then(function(resp) {
+      return resp.data.token;
+    });
+  };
 
-    var signout = function() {
-      $window.localStorage.removeItem('com.bookman');
-      $location.path('/signin');
-    };
+  var isAuth = function() {
+    return !!$window.localStorage.getItem('com.bookman');
+  };
 
-    return {
-      signin: signin,
-      signup: signup,
-      isAuth: isAuth,
-      signout: signout
-    };
-  });
+  var signout = function() {
+    $window.localStorage.removeItem('com.bookman');
+    $location.path('/signin');
+  };
+
+  return {
+    signin: signin,
+    signup: signup,
+    isAuth: isAuth,
+    signout: signout
+  };
+});

@@ -15,11 +15,14 @@ h2 {
   margin-bottom: 10px;
 }
 
-#signin,#signup input {
+#signin,
+#signup input {
   color: #81d4fa;
 }
 
-#links, #bookmarks, #readingList {
+#links,
+#bookmarks,
+#readingList {
   clear: both;
   margin-top: 10px;
 }
@@ -33,8 +36,8 @@ h2 {
 }
 
 .link:hover {
-  cursor: pointer; 
-  cursor: hand; 
+  cursor: pointer;
+  cursor: hand;
   background-color: #616161;
 }
 
@@ -78,7 +81,6 @@ input[type=url]:focus {
   outline: none;
 }
 
-
 .error {
   border: red solid 4px;
   padding: 10px;
@@ -92,38 +94,38 @@ input[type=url]:focus {
 }
 
 .row-centered {
-    text-align:center;
+  text-align: center;
 }
+
 .col-centered {
-    display:inline-block;
-    float:none;
-    /* reset the text-align */
-    text-align: left;
-    /* inline-block space fix */
-    margin-right:-4px;
+  display: inline-block;
+  float: none;
+  /* reset the text-align */
+  text-align: left;
+  /* inline-block space fix */
+  margin-right: -4px;
 }
 
 .nav-wrapper {
   background-color: #c62828;
 }
-.projectName {
-font-family: 'Kaushan Script', cursive;
-font-size: 35px;
-padding: 5px;
-padding-top: 0;
-margin-left: 10px;
 
+.projectName {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 35px;
+  padding: 5px;
+  padding-top: 0;
+  margin-left: 10px;
 }
 
 .logo {
-font-family: 'Kaushan Script', cursive;
-font-size: 60px;
-padding: 5px;
-padding-top: 0;
-margin-left: -10px;
-text-align: center;
-color: #c62828;
-
+  font-family: 'Kaushan Script', cursive;
+  font-size: 60px;
+  padding: 5px;
+  padding-top: 0;
+  margin-left: -10px;
+  text-align: center;
+  color: #c62828;
 }
 
 #search {
@@ -148,7 +150,8 @@ color: #c62828;
   padding: 10px;
   padding-top: 0;
 }
-.lists li a:hover{
+
+.lists li a:hover {
   background-color: #bf360c;
 }
 
@@ -159,14 +162,16 @@ color: #c62828;
 .newList {
   width: 100px;
 }
+
 .newList input {
-    color: white;
-    max-height: 35px;
+  color: white;
+  max-height: 35px;
 }
 
 .urlInput li {
   display: inline;
 }
+
 .urlInput input {
   width: 300px;
 }

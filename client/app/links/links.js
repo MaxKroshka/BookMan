@@ -21,18 +21,18 @@ angular.module('bookman.links', [])
 
   $scope.toggleEvent = function(url, event) {
     Links.toggleEvent({ url: url, event: event }).then(function(res) {
-        $scope.initialize();
-    });
-  };
-
-  $scope.removeUrl = function(url){
-    Links.removeLink({url: url}).
-    then(function(res){
       $scope.initialize();
     });
   };
 
-  $scope.openTab = function(url){
+  $scope.removeUrl = function(url) {
+    Links.removeLink({ url: url })
+      .then(function(res) {
+        $scope.initialize();
+      });
+  };
+
+  $scope.openTab = function(url) {
     console.log('clicked');
     $window.open(url, '_blank');
   };

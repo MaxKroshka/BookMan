@@ -20,9 +20,9 @@ var bodyParser = require('body-parser');
 // that hits your server. Logging and parsing are two operations
 // commonly found in a middleware stack.
 
-module.exports = function (app, express) {
+module.exports = function(app, express) {
   app.use(morgan('dev'));
-  app.use(bodyParser.urlencoded({extended: true}));
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../../client'));
 };

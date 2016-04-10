@@ -16,7 +16,7 @@
   <div class='container'>
     <h1 class='logo' ng-hide="location != '/signup' && location != '/signin'"> Bookman!</h1>
     <nav ng-show="location != '/signup' && location != '/signin'">
-      <div class='nav-wrapper' >
+      <div class='nav-wrapper'>
         <ul class='left'>
           <li class='projectName'>Bookman!</li>
         </ul>
@@ -37,21 +37,23 @@
       </div>
     </nav>
     <ul class='left lists' ng-controller='ListsCtrl' ng-show="location != '/signup' && location != '/signin'">
-      <li><a href='#/bookmarks'class="waves-effect waves-light btn" ng-model='bookmarks' ng-class="{amber: activeTab === 'bookmarks'}" ng-click='changeTab("bookmarks")'><i class="material-icons left">star</i>Favorites</a></li>
-      <li><a href='#/readingList'class="waves-effect waves-light btn" ng-class="{amber: activeTab === 'readingList'}" ng-click='changeTab("readingList")'><i class="material-icons left">class</i>Reading List</a></li>
-      <li><a href='#/allLinks'class="waves-effect waves-light btn" ng-class="{amber: activeTab === 'allLinks'}" ng-click='changeTab("allLinks")'>All Links</a></li>
+      <li><a href='#/bookmarks' class="waves-effect waves-light btn" ng-model='bookmarks' ng-class="{amber: activeTab === 'bookmarks'}" ng-click='changeTab("bookmarks")'><i class="material-icons left">star</i>Favorites</a></li>
+      <li><a href='#/readingList' class="waves-effect waves-light btn" ng-class="{amber: activeTab === 'readingList'}" ng-click='changeTab("readingList")'><i class="material-icons left">class</i>Reading List</a></li>
+      <li><a href='#/allLinks' class="waves-effect waves-light btn" ng-class="{amber: activeTab === 'allLinks'}" ng-click='changeTab("allLinks")'>All Links</a></li>
       <li class='list' ng-repeat="list in data.lists" style='margin-right: 4px'>
         <a href='#/' class="waves-effect waves-light btn" ng-click='changeTab(list.name)' ng-class="{amber: list.name === activeTab}">{{list.name}}</a>
       </li>
+      <a class="btn-floating btn waves-effect waves-light black" ng-click='deleteMode()'><i class="material-icons">delete</i></a>
       <a class="btn-floating btn waves-effect waves-light cyan darken-2"><i class="material-icons" ng-click='toggleInput()'>add</i></a>
-      <li ng-show='showInput' class='newList'><input placeholder="New bookmark list" type="text" class="validate" maxlength="20" ng-model='listName'></li>
+      <li ng-show='showInput' class='newList'>
+        <input placeholder="New bookmark list" type="text" class="validate" maxlength="20" ng-minlength='1' ng-model='listName'>
+      </li>
       <a class="btn-floating btn waves-effect waves-light cyan darken-2" ng-show='showInput'><i class="material-icons" ng-click='addList()'>done</i></a>
     </ul>
     <div ng-view></div>
   </div>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-route/angular-route.js"></script>
-
   <script src="app/auth/auth.js"></script>
   <script src="app/links/links.js"></script>
   <script src="app/lists/lists.js"></script>

@@ -1,45 +1,41 @@
-angular.module('bookman', [
-    'bookman.services',
-    'bookman.links',
-    'bookman.lists',
-    'bookman.auth',
-    'ngRoute'
-  ])
+angular.module('bookman', ['bookman.services', 'bookman.links', 'bookman.lists', 'bookman.auth', 'ngRoute'])
   .config(function($routeProvider, $httpProvider) {
     $routeProvider
       .when('/signin', {
         templateUrl: 'app/auth/signin.html',
         controller: 'AuthController',
-        access: {restricted: false}
+        access: { restricted: false }
       })
       .when('/signup', {
         templateUrl: 'app/auth/signup.html',
         controller: 'AuthController',
-        access: {restricted: false}
+        access: { restricted: false }
       })
       .when('/allLinks', {
         templateUrl: 'app/links/allLinks.html',
         controller: 'LinksController',
-        access: {restricted: true}
+        access: { restricted: true }
       })
       .when('/bookmarks', {
         templateUrl: 'app/links/bookmarks.html',
         controller: 'LinksController',
-        access: {restricted: true},
-         resolve: {
-          updateLists: function ($rootScope) {
+        access: { restricted: true },
+        resolve: {
+          updateLists: function($rootScope) {
             $rootScope.flag = Math.random();
+            $rootScope.activeTab = 'bookmarks';
+            $rootScope.deleteMode = false;
           }
         }
       })
       .when('/readingList', {
         templateUrl: 'app/links/readingList.html',
         controller: 'LinksController',
-        access: {restricted: true}
+        access: { restricted: true }
       })
       .when('/signout', {
         resolve: {
-          signout: function (Auth) {
+          signout: function(Auth) {
             return Auth.signout();
           }
         }
@@ -47,22 +43,22 @@ angular.module('bookman', [
       .when('/', {
         templateUrl: 'app/links/links.html',
         controller: 'LinksController',
-        access: {restricted: true}
+        access: { restricted: true }
       })
       .otherwise({
         templateUrl: 'app/links/bookmarks.html',
         controller: 'LinksController',
-        access: {restricted: true}
+        access: { restricted: true }
       });
-  $httpProvider.interceptors.push('AttachTokens');
+    $httpProvider.interceptors.push('AttachTokens');
   })
-  .factory('AttachTokens', function ($window) {
+  .factory('AttachTokens', function($window) {
     // this is an $httpInterceptor
     // its job is to stop all out going request
     // then look in local storage and find the user's token
     // then add it to the header so the server can validate the request
     var attach = {
-      request: function (object) {
+      request: function(object) {
         var jwt = $window.localStorage.getItem('com.bookman');
         if (jwt) {
           object.headers['x-access-token'] = jwt;

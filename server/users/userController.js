@@ -1,44 +1,44 @@
 var User = require('./userModel.js');
-    Q = require('q');
-    jwt = require('jwt-simple');
+Q = require('q');
+jwt = require('jwt-simple');
 
 // Promisify a few mongoose methods with the `q` promise library
 var findUser = Q.nbind(User.findOne, User);
 var createUser = Q.nbind(User.create, User);
 
 module.exports = {
-  signin: function (req, res, next) {
+  signin: function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
 
-    findUser({username: username})
-      .then(function (user) {
+    findUser({ username: username })
+      .then(function(user) {
         if (!user) {
           next(new Error('User does not exist'));
         } else {
           return user.comparePasswords(password)
-            .then(function (foundUser) {
+            .then(function(foundUser) {
               if (foundUser) {
                 var token = jwt.encode(user, 'secret');
-                res.json({token: token});
+                res.json({ token: token });
               } else {
                 return next(new Error('No user'));
               }
             });
         }
       })
-      .fail(function (error) {
+      .fail(function(error) {
         next(error);
       });
   },
 
-  signup: function (req, res, next) {
+  signup: function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
 
     // check to see if user already exists
-    findUser({username: username})
-      .then(function (user) {
+    findUser({ username: username })
+      .then(function(user) {
         if (user) {
           next(new Error('User already exist!'));
         } else {
@@ -49,17 +49,17 @@ module.exports = {
           });
         }
       })
-      .then(function (user) {
+      .then(function(user) {
         // create token to send back for auth
         var token = jwt.encode(user, 'secret');
-        res.json({token: token});
+        res.json({ token: token });
       })
-      .fail(function (error) {
+      .fail(function(error) {
         next(error);
       });
   },
 
-  checkAuth: function (req, res, next) {
+  checkAuth: function(req, res, next) {
     // checking to see if the user is authenticated
     // grab the token in the header is any
     // then decode the token, which we end up being the user object
@@ -69,15 +69,15 @@ module.exports = {
       next(new Error('No token'));
     } else {
       var user = jwt.decode(token, 'secret');
-      findUser({username: user.username})
-        .then(function (foundUser) {
+      findUser({ username: user.username })
+        .then(function(foundUser) {
           if (foundUser) {
             res.send(200);
           } else {
             res.send(401);
           }
         })
-        .fail(function (error) {
+        .fail(function(error) {
           next(error);
         });
     }

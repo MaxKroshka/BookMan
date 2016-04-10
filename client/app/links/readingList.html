@@ -5,7 +5,7 @@
       <a class="btn-floating btn red" ng-click='toggleEvent(link.url, "reading")'><i class="material-icons">clear</i></a>
     </ul>
     <ul>
-      <div class='title'>{{link.title}}</div>
+      <div class='title' ng-click='openTab(link.url)'>{{link.title}}</div>
     </ul>
     <div class='linkUrl'>{{link.url}}</div>
   </div>
